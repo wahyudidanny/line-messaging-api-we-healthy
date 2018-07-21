@@ -51,16 +51,89 @@ $app->post('/', function ($request, $response)
 
 		if(strtolower($userMessage) == "keyword")
 		{
-			$messages[] = "Hello";
-			$messages[] = "I just want to show when something going wrong.";
-			$messages[] = "Error will displayed in Emulator but it hidden on Line Messenger.";
-			$messages[] = "Please type anything you want.";
+			$messages[] = "Hello \n";
+			$messages[] = "Ada beberapa keyword yang bisa kamu pakai \n";
+			$messages[] = "1.Olahraga \n";
+			$messages[] = "2.Tips Kesehatan\n";
+			$messages[] = "3.Resep Makanan \n";
+			$messages[] = "Untuk yang lain bakal menyusul ya";
+			
 			
 		  	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(implode(" ",$messages));
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		}
 		
+		
+		
+		
+		if(strtolower($userMessage) == "tips kesehatan")
+		{
+		 $questions = array(
+						"Sebelum olahraga sebaiknya kita melakukan pemanasan terlebih dahulu",
+						"Perbanyak Konsumsi Air Putih",
+						"Tidur dan Beristirahatlah yang Cukup",
+						"Pilih Makanan Berwarna Cerah sebagai Antioksidan",
+						"Kurangi Makanan Olahan dan Makanan dalam Kaleng",
+						"Kenali Makanan Pemicu, Kendalikan Asupan Gula dan Garam Anda",
+						"Katakan Tidak untuk Makanan Berminyak"
+						);
+				$index = rand(0, count($questions) - 1);
+				$getval = array($questions[$index]);
+				
+				
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(implode(" ",$getval));
+				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+
+		}
+		
+		
+		
+		if(strtolower($userMessage) == "olahraga medium")
+		{
+			$carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
+			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Mountain Climbers", "30 Repetisi x 3 Set","https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/4b668875-0d03-4c26-8126-81daa38d8fad.gif",[
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/4b668875-0d03-4c26-8126-81daa38d8fad.gif"),
+			  ]),
+			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Sprawls","30 Repetisi x 3 Set","https://img.aws.livestrongcdn.com/ls-article-image-640/cme/photography.prod.demandstudios.com/940ca2f5-2b16-4810-b940-eca178e2dd72.gif",[
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://img.aws.livestrongcdn.com/ls-article-image-640/cme/photography.prod.demandstudios.com/940ca2f5-2b16-4810-b940-eca178e2dd72.gif"),
+			  ]),
+				
+			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Jumping Squats","30 Repetisi x 3 Set","https://media.giphy.com/media/n0BYzacl49Wfu/giphy.gif",[
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://media.giphy.com/media/n0BYzacl49Wfu/giphy.gif"),
+			  ]),
+
+			  ]);
+			$templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('nama template',$carouselTemplateBuilder);
+			$result = $bot->replyMessage($event['replyToken'], $templateMessage);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		}
+		
+		
+		if(strtolower($userMessage) == "olahraga sulit")
+		{
+			$carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
+			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Pistol Squat", "5 Repetisi x 3 Set","https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/b0bf80e6-92bf-4a8c-8573-5876a22e9c46.gif",[
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/b0bf80e6-92bf-4a8c-8573-5876a22e9c46.gif"),
+			  ]),
+				
+			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Jackknifes","30 Repetisi x 3 Set","http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif",[
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif"),
+			  ]),
+				
+			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Burpees","30 Repetisi x 3 Set","https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif",[
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif"),
+			  ]),
+			
+			
+			  ]);
+			$templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('nama template',$carouselTemplateBuilder);
+			$result = $bot->replyMessage($event['replyToken'], $templateMessage);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		}
+
+
 		if(strtolower($userMessage) == "olahraga gampang")
 		{
 			$carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
