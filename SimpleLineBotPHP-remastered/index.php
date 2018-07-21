@@ -45,19 +45,17 @@ $app->post('/', function ($request, $response)
 	$data = json_decode($body, true);
 	
 	
+	//*function on_follow()
+	//{
+		//return "Welcome {$this->profile->display_name}.\n Saya adalah bot, saya akan membantumu .";
+	//}
+	
+	
 	foreach ($data['events'] as $event)
 	{
 		$userMessage = $event['message']['text'];
-		if(strtolower($userMessage) == 'halo')
-		{
-			$message = "Halo juga";
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
-			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
-			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		
-		}
-		
-		
+		/*
 		if(strtolower($userMessage) == 'saya mau olahraga')
 		{
 			
@@ -78,16 +76,38 @@ $app->post('/', function ($request, $response)
 					$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 					return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 				}
+				
+				
+				
 			}
+			
+			
+		
 		}
+		*/
+		if(strtolower($userMessage) == 'kasi tips olahraga' || strtolower($userMessage) == 'kasi tips olaharga dong')
+		{
+			$messages = $this->tips_olahraga();
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		}
+			
+	
 		
+		if(strtolower($userMessage) == 'halo')
+		{
+			$message = "Halo juga";
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		
-		
+		}
 		
 		if(strtolower($userMessage) == 'event')
 		{
 			$message = $event;
-          		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		
@@ -171,6 +191,25 @@ $app->post('/', function ($request, $response)
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		}
 	}
+	
+	
+	private function tips_olahraga(){
+			$questions = array(
+					array('Sebelum olahraga sebaiknya kita melakukan pemanasan terlebih dahulu'),
+					array('Perbanyak Konsumsi Air Putih'),
+					array('Tidur dan Beristirahatlah yang Cukup'),
+					array('Pilih Makanan Berwarna Cerah sebagai Antioksidan'),
+					array('Kurangi Makanan Olahan dan Makanan dalam Kaleng'),
+					array('Kenali Makanan Pemicu, Kendalikan Asupan Gula dan Garam Anda'),
+					array('Berhenti Makan ketika Anda Merasa Kenyang'),
+					array('Katakan Tidak untuk Makanan Berminyak'),
+				);
+				
+			$index = rand(0, count($questions) - 1);
+
+			return array($questions[$index]);
+		}
+	
 	
 
 });
