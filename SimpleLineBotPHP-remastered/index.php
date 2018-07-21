@@ -85,7 +85,7 @@ $app->post('/', function ($request, $response)
 		
 		}
 		*/
-		if(strtolower($userMessage) == 'kasi tips olahraga' || strtolower($userMessage) == 'kasi tips olaharga dong')
+		if(strtolower($userMessage) == 'kasi tips olahraga')
 		{
 			$messages = $this->tips_olahraga();
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
