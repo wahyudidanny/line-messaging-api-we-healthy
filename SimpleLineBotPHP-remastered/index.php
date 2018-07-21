@@ -87,7 +87,8 @@ $app->post('/', function ($request, $response)
 		*/
 		if(strtolower($userMessage) == 'kasi tips olahraga')
 		{
-			$messages = tips_olahraga();
+			$getval = tips_olahraga();
+			$messages = implode(" ",$getval);
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
