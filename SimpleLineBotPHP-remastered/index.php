@@ -87,7 +87,7 @@ $app->post('/', function ($request, $response)
 		*/
 		if(strtolower($userMessage) == 'kasi tips olahraga')
 		{
-			$messages = $this->tips_olahraga();
+			$messages = 'kasi tips olahraga';
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
@@ -197,24 +197,6 @@ $app->post('/', function ($request, $response)
 	
 
 });
-
-public function tips_olahraga(){
-		$questions = array(
-			"Sebelum olahraga sebaiknya kita melakukan pemanasan terlebih dahulu",
-			"Perbanyak Konsumsi Air Putih",
-			"Tidur dan Beristirahatlah yang Cukup",
-			"Pilih Makanan Berwarna Cerah sebagai Antioksidan",
-			"Kurangi Makanan Olahan dan Makanan dalam Kaleng",
-			"Kenali Makanan Pemicu, Kendalikan Asupan Gula dan Garam Anda",
-			"Berhenti Makan ketika Anda Merasa Kenyang",
-			"Katakan Tidak untuk Makanan Berminyak"
-		);
-
-
-	$index = rand(0, count($questions) - 1);
-
-	return array($questions[$index]);
-}
 
 
 
