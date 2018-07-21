@@ -2,7 +2,6 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-
 use \LINE\LINEBot\SignatureValidator as SignatureValidator;
 foreach (glob("handler/*.php") as $handler){include $handler;}
 // load config
@@ -47,37 +46,20 @@ $app->post('/', function ($request, $response)
 
 	foreach ($data['events'] as $event)
 	{
-		if ($event['type'] == 'message')
+		
+		$userMessage = $event['message']['text'];
+		
+		if(strtolower($userMessage) == 'kasi tips olahraga' || strtolower($userMessage) == 'kasi tips olaharga dong')
 		{
-			if($event['message']['type'] == 'text')
-			{
-				
-				// --------------------------------------------------------------- NOTICE ME...
-				
-				$inputMessage = $event['message']['text'];
-				
-				if ($inputMessage[0] == '/'){
-					$inputMessage = ltrim($inputMessage,'/');
-					$inputSplit = explode(' ',$inputMessage,2);
-					
-					
-					if (function_exists($inputSplit[0])){
-						$outputMessage = $inputSplit[0]($inputSplit[1]);
-					}else{
-						$outputMessage = new TextMessageBuilder('Tidak Mengerti');
-					}
-				}
-				
-				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
-				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-				
-				// --------------------------------------------------------------- ...SENPAI!
-				
-			}
+			$messages = $this->tips_olahraga();
+			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		}
+			
+		
 	}
 		
 });
-
 
 $app->run();
