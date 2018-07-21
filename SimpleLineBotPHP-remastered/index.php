@@ -194,10 +194,6 @@ $app->post('/', function ($request, $response)
 	}
 	
 	
-	
-	
-
-});
 function tips_olahraga(){
 		$questions = array(
 			"Sebelum olahraga sebaiknya kita melakukan pemanasan terlebih dahulu",
@@ -214,6 +210,10 @@ function tips_olahraga(){
  
  	return array($questions[$index]);
 }
+	
+	
+
+});
 
 
 $app->run();
