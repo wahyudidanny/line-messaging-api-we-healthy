@@ -45,10 +45,10 @@ $app->post('/', function ($request, $response)
 	$data = json_decode($body, true);
 	
 	
-	//*function on_follow()
-	//{
-		//return "Welcome {$this->profile->display_name}.\n Saya adalah bot, saya akan membantumu .";
-	//}
+	function on_follow()
+	{
+		return "Welcome {$this->profile->display_name}.\n Saya adalah bot, saya akan membantumu .";
+	}
 	
 	
 	foreach ($data['events'] as $event)
