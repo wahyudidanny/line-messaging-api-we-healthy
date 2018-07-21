@@ -45,12 +45,6 @@ $app->post('/', function ($request, $response)
 	$data = json_decode($body, true);
 	
 	
-	function on_follow()
-	{
-		return "Welcome {$this->profile->display_name}.\n Saya adalah bot, saya akan membantumu .";
-	}
-	
-	
 	foreach ($data['events'] as $event)
 	{
 		$userMessage = $event['message']['text'];
@@ -63,10 +57,37 @@ $app->post('/', function ($request, $response)
 		
 		}
 		
+		
+		if(strtolower($userMessage) == 'saya mau olahraga')
+		{
+			
+			if($this->session->get('mq_status') == 0 && $text == 'start'){
+				$this->session->set('mq_status', 1);
+				$this->session->set('mq_start_time', time());
+				
+				
+				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('baik saya set timer 5 detik');
+				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+				
+				
+				if(time() - $this->session->get('mq_start_time') > 5){
+					$this->session->set('mq_status', 0);
+					$messages[] = 'Time is over.';
+					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($messages);
+					$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+					return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+				}
+			}
+		}
+		
+		
+		
+		
 		if(strtolower($userMessage) == 'event')
 		{
 			$message = $event;
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+          		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		
