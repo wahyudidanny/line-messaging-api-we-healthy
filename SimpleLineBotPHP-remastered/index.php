@@ -45,6 +45,12 @@ $app->post('/', function ($request, $response)
 	$data = json_decode($body, true);
 	
 	
+	//*function on_follow()
+	//{
+		//return "Welcome {$this->profile->display_name}.\n Saya adalah bot, saya akan membantumu .";
+	//}
+	
+	
 	foreach ($data['events'] as $event)
 	{
 		$userMessage = $event['message']['text'];
@@ -57,6 +63,16 @@ $app->post('/', function ($request, $response)
 		
 		}
 		
+		if(strtolower($userMessage) == 'event')
+		{
+			$message = $event;
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		
+		}
+		
+		
 		if(strtolower($userMessage) == 'contoh text message')
 		{
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('ini adalah contoh text message');
@@ -67,7 +83,7 @@ $app->post('/', function ($request, $response)
 		
 		if(strtolower($userMessage) == 'kirim gambar pushup')
 		{
-            $imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://i.ytimg.com/vi/_l3ySVKYVJ8/maxresdefault.jpg");
+            $imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://i.ytimg.com/vi/_l3ySVKYVJ8/maxresdefault.jpg","https://i.ytimg.com/vi/_l3ySVKYVJ8/maxresdefault.jpg");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		}
@@ -75,14 +91,14 @@ $app->post('/', function ($request, $response)
 		
 		if(strtolower($userMessage) == 'kirim gambar')
 		{
-            $imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://i.ytimg.com/vi/_l3ySVKYVJ8/maxresdefault.jpg");
+            $imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://i.ytimg.com/vi/_l3ySVKYVJ8/maxresdefault.jpg","https://i.ytimg.com/vi/_l3ySVKYVJ8/maxresdefault.jpg");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		
 		}
 		
 
-		if($userMessage == "kirim sticker")
+		if(strtolower($userMessage) == "kirim sticker")
 		{
 			$stickerMessage = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder(1,1);
 			$result = $bot->replyMessage($event['replyToken'], $stickerMessage);
@@ -90,14 +106,14 @@ $app->post('/', function ($request, $response)
 		}
 				
 		
-		if($userMessage == "button template")
+		if(strtolower($userMessage) == "button template")
 		{
 			$buttonTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder(
 				 "title",
 				 "text",
 				 "https://i0.wp.com/angryanimebitches.com/wp-content/uploads/2013/03/tamakomarket-overallreview-tamakoanddera.jpg",
 				   [
-						new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Action Button','action'),
+						new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Action Button','action'), //display , and paramter value in API
 				   ]
 			   );
 			$templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('nama template', $buttonTemplateBuilder);
@@ -105,7 +121,7 @@ $app->post('/', function ($request, $response)
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		}
 		
-		if($userMessage == "confirm template")
+		if(strtolower($userMessage) == "confirm template")
 		{
 			$confirmTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder(
 			   "apakah gw ganteng?",
@@ -119,7 +135,7 @@ $app->post('/', function ($request, $response)
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 			}
 		
-		if($userMessage == "carousel template")
+		if(strtolower($userMessage) == "carousel template")
 		{
 			$carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("title", "text","https://i0.wp.com/angryanimebitches.com/wp-content/uploads/2013/03/tamakomarket-overallreview-tamakoanddera.jpg",[
@@ -138,16 +154,4 @@ $app->post('/', function ($request, $response)
 
 });
 
-// $app->get('/push/{to}/{message}', function ($request, $response, $args)
-// {
-// 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
-// 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
-
-// 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($args['message']);
-// 	$result = $bot->pushMessage($args['to'], $textMessageBuilder);
-
-// 	return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-// });
-
-/* JUST RUN IT */
 $app->run();
