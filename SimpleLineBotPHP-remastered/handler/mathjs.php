@@ -10,4 +10,15 @@ function calculate($query){
 	return $result;
 }
 
+function Keyword($query)
+{
+	$messages[] = "Keyword";
+	$messages[] = "1.Olahraga";
+	$messages[] = "2.Masakan";
+	$messages[] = "3.Tips";
+	$messages[] = "4.About";
+	return $messages;
+}
+
+
 ?>
