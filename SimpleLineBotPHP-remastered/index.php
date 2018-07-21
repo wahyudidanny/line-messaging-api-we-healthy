@@ -48,7 +48,7 @@ $app->post('/', function ($request, $response)
 	{
 		
 		$userMessage = $event['message']['text'];
-		
+		/*
 		if(strtolower($userMessage) == "olahraga")
 		{
 			$carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
@@ -75,8 +75,22 @@ $app->post('/', function ($request, $response)
 			$templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('nama template',$carouselTemplateBuilder);
 			$result = $bot->replyMessage($event['replyToken'], $templateMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		}*/
+		if(strtolower($userMessage) == "carousel template")
+		{
+			$carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
+			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("title", "text","https://i0.wp.com/angryanimebitches.com/wp-content/uploads/2013/03/tamakomarket-overallreview-tamakoanddera.jpg",[
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('buka',"http://hilite.me/"),
+			  ]),
+			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("title", "text","https://i0.wp.com/angryanimebitches.com/wp-content/uploads/2013/03/tamakomarket-overallreview-tamakoanddera.jpg",[
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"http://hilite.me/"),
+			  ]),
+
+			  ]);
+			$templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('nama template',$carouselTemplateBuilder);
+			$result = $bot->replyMessage($event['replyToken'], $templateMessage);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		}
-	
 	}
 		
 });
