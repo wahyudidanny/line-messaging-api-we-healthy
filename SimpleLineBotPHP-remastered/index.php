@@ -75,9 +75,9 @@ $app->post('/', function ($request, $response)
 			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://cdn-ami-drupal.heartyhosting.com/sites/muscleandfitness.com/files/body-weight-squat-swiss-ball-exercise_landscape.jpg"),
 			  ]),
 			
-			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Situp","60 Repetisi x 3 Set","http://78.media.tumblr.com/586bae1d9492345315b7a066c69287cb/tumblr_inline_mx42q8LFnF1rdu2za.jpg",[
-			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"http://78.media.tumblr.com/586bae1d9492345315b7a066c69287cb/tumblr_inline_mx42q8LFnF1rdu2za.jpg"),
-			  ]),
+			  //new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Situp","60 Repetisi x 3 Set","http://78.media.tumblr.com/586bae1d9492345315b7a066c69287cb/tumblr_inline_mx42q8LFnF1rdu2za.jpg",[
+			  //new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"http://78.media.tumblr.com/586bae1d9492345315b7a066c69287cb/tumblr_inline_mx42q8LFnF1rdu2za.jpg"),
+			 // ]),
 				
 			 new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Jumping Jack","60 Repetisi x 3 Set","http://www.weightloss-pill.net/wp-content/uploads/2018/03/jumping-jacks.jpg",[
 			 new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"http://www.weightloss-pill.net/wp-content/uploads/2018/03/jumping-jacks.jpg"),
