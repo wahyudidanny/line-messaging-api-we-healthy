@@ -195,14 +195,14 @@ $app->post('/', function ($request, $response)
 	
 	private function tips_olahraga(){
 			$questions = array(
-					array('Sebelum olahraga sebaiknya kita melakukan pemanasan terlebih dahulu'),
-					array('Perbanyak Konsumsi Air Putih'),
-					array('Tidur dan Beristirahatlah yang Cukup'),
-					array('Pilih Makanan Berwarna Cerah sebagai Antioksidan'),
-					array('Kurangi Makanan Olahan dan Makanan dalam Kaleng'),
-					array('Kenali Makanan Pemicu, Kendalikan Asupan Gula dan Garam Anda'),
-					array('Berhenti Makan ketika Anda Merasa Kenyang'),
-					array('Katakan Tidak untuk Makanan Berminyak'),
+					'Sebelum olahraga sebaiknya kita melakukan pemanasan terlebih dahulu',
+					'Perbanyak Konsumsi Air Putih',
+					'Tidur dan Beristirahatlah yang Cukup',
+					'Pilih Makanan Berwarna Cerah sebagai Antioksidan',
+					'Kurangi Makanan Olahan dan Makanan dalam Kaleng'),
+					'Kenali Makanan Pemicu, Kendalikan Asupan Gula dan Garam Anda',
+					'Berhenti Makan ketika Anda Merasa Kenyang',
+					'Katakan Tidak untuk Makanan Berminyak'
 				);
 				
 			$index = rand(0, count($questions) - 1);
