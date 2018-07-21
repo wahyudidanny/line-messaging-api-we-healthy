@@ -4,6 +4,8 @@ require __DIR__ . '/vendor/autoload.php';
 
 
 use \LINE\LINEBot\SignatureValidator as SignatureValidator;
+use LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
+foreach (glob("handler/*.php") as $handler){include $handler;}
 
 // load config
 $dotenv = new Dotenv\Dotenv(__DIR__);
@@ -39,52 +41,17 @@ $app->post('/', function ($request, $response)
 		return $response->withStatus(400, 'Invalid signature');
 	}
 
-	// init bot
+	
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
 	$data = json_decode($body, true);
 	
-	
-	//*function on_follow()
-	//{
-		//return "Welcome {$this->profile->display_name}.\n Saya adalah bot, saya akan membantumu .";
-	//}
-	
-	
+
 	foreach ($data['events'] as $event)
 	{
 		$userMessage = $event['message']['text'];
 		
 		/*
-		if(strtolower($userMessage) == 'saya mau olahraga')
-		{
-			
-			if($this->session->get('mq_status') == 0 && $text == 'start'){
-				$this->session->set('mq_status', 1);
-				$this->session->set('mq_start_time', time());
-				
-				
-				$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('baik saya set timer 5 detik');
-				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
-				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-				
-				
-				if(time() - $this->session->get('mq_start_time') > 5){
-					$this->session->set('mq_status', 0);
-					$messages[] = 'Time is over.';
-					$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($messages);
-					$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
-					return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-				}
-				
-				
-				
-			}
-			
-			
-		
-		}
-		*/
 		if(strtolower($userMessage) == 'kasi tips olahraga')
 		{
 			
@@ -111,7 +78,7 @@ $app->post('/', function ($request, $response)
 		if(strtolower($userMessage) == 'halo')
 		{
 			$message = "Halo juga";
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+           		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		
@@ -205,7 +172,22 @@ $app->post('/', function ($request, $response)
 		}
 	}
 
-	
+	*/
+		if ($inputMessage[0] == '/'){
+					$inputMessage = ltrim($inputMessage,'/');
+					$inputSplit = explode(' ',$inputMessage,2);
+					
+					
+					if (function_exists($inputSplit[0])){
+						$outputMessage = $inputSplit[0]($inputSplit[1]);
+					}else{
+						$outputMessage = new TextMessageBuilder('Tidak Mengerti');
+					}
+				}
+				
+				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
+				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+				`
 
 });
 
