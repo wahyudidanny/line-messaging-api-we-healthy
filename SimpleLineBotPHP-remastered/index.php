@@ -4,7 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 
 use \LINE\LINEBot\SignatureValidator as SignatureValidator;
-
+foreach (glob("handler/*.php") as $handler){include $handler;}
 // load config
 $dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->load();
