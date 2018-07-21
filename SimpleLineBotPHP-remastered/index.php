@@ -169,7 +169,27 @@ $app->post('/', function ($request, $response)
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		}
 	}
-
+	
+	
+		if ($inputMessage[0] == '/'){
+					$inputMessage = ltrim($inputMessage,'/');
+					$inputSplit = explode(' ',$inputMessage,2);
+					
+					
+					if (function_exists($inputSplit[0])){
+						$outputMessage = $inputSplit[0]($inputSplit[1]);
+					}else{
+						$outputMessage = new TextMessageBuilder('Tidak Mengerti');
+					}
+			
+			
+				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
+				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+	
+				}
+				
+				
+	
 	/*
 		if ($inputMessage[0] == '/'){
 					$inputMessage = ltrim($inputMessage,'/');
