@@ -4,8 +4,6 @@ require __DIR__ . '/vendor/autoload.php';
 
 
 use \LINE\LINEBot\SignatureValidator as SignatureValidator;
-use LINE\LINEBot\MessageBuilder\TextMessageBuilder as TextMessageBuilder;
-foreach (glob("handler/*.php") as $handler){include $handler;}
 
 // load config
 $dotenv = new Dotenv\Dotenv(__DIR__);
@@ -70,7 +68,7 @@ $app->post('/', function ($request, $response)
 			$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-		}
+		}*/
 			
 			
 	
@@ -172,7 +170,7 @@ $app->post('/', function ($request, $response)
 		}
 	}
 
-	*/
+	/*
 		if ($inputMessage[0] == '/'){
 					$inputMessage = ltrim($inputMessage,'/');
 					$inputSplit = explode(' ',$inputMessage,2);
@@ -188,7 +186,7 @@ $app->post('/', function ($request, $response)
 				$result = $bot->replyMessage($event['replyToken'], $outputMessage);
 				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 				`
-
+*/
 });
 
 
