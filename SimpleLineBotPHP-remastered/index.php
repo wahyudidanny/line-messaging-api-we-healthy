@@ -80,7 +80,7 @@ $app->post('/', function ($request, $response)
 			  ]),
 				
 			 new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Jumping Jack","60 Repetisi x 3 Set","http://www.weightloss-pill.net/wp-content/uploads/2018/03/jumping-jacks.jpg",[
-			 new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"60 Repetisi x 3 Set","http://www.weightloss-pill.net/wp-content/uploads/2018/03/jumping-jacks.jpg"),
+			 new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"http://www.weightloss-pill.net/wp-content/uploads/2018/03/jumping-jacks.jpg"),
 			  ]),
 				
 			  ]);
