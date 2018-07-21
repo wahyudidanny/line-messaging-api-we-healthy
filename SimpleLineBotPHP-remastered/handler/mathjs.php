@@ -10,14 +10,11 @@ function calculate($query){
 	return $result;
 }
 
-function Keyword($query)
+function keyword($query)
 {
-	$messages[] = "Keyword";
-	$messages[] = "1.Olahraga";
-	$messages[] = "2.Masakan";
-	$messages[] = "3.Tips";
-	$messages[] = "4.About";
-	return $messages;
+	$query = urlencode($query);
+	$result = "test";
+	return $result;
 }
 
 
