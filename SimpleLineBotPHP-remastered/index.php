@@ -49,7 +49,7 @@ $app->post('/', function ($request, $response)
 		
 		$userMessage = $event['message']['text'];
 		
-		if(strtolower($userMessage) == "saya mau olahraga" || strtolower($userMessage) == "olahraga")
+		if(strtolower($userMessage) == "olahraga")
 		{
 			$carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Pushup", "30 Repetisi x 3 Set","https://i.ytimg.com/vi/_l3ySVKYVJ8/maxresdefault.jpg",[
