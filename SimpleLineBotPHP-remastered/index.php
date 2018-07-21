@@ -198,17 +198,18 @@ $app->post('/', function ($request, $response)
 
 });
 
-private function tips_olahraga(){
-	$questions = array(
-			'Sebelum olahraga sebaiknya kita melakukan pemanasan terlebih dahulu',
-			'Perbanyak Konsumsi Air Putih',
-			'Tidur dan Beristirahatlah yang Cukup',
-			'Pilih Makanan Berwarna Cerah sebagai Antioksidan',
-			'Kurangi Makanan Olahan dan Makanan dalam Kaleng'),
-			'Kenali Makanan Pemicu, Kendalikan Asupan Gula dan Garam Anda',
-			'Berhenti Makan ketika Anda Merasa Kenyang',
-			'Katakan Tidak untuk Makanan Berminyak'
+public function tips_olahraga(){
+		$questions = array(
+			"Sebelum olahraga sebaiknya kita melakukan pemanasan terlebih dahulu",
+			"Perbanyak Konsumsi Air Putih",
+			"Tidur dan Beristirahatlah yang Cukup",
+			"Pilih Makanan Berwarna Cerah sebagai Antioksidan",
+			"Kurangi Makanan Olahan dan Makanan dalam Kaleng",
+			"Kenali Makanan Pemicu, Kendalikan Asupan Gula dan Garam Anda",
+			"Berhenti Makan ketika Anda Merasa Kenyang",
+			"Katakan Tidak untuk Makanan Berminyak"
 		);
+
 
 	$index = rand(0, count($questions) - 1);
 
