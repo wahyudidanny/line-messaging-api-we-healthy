@@ -50,7 +50,7 @@ $app->post('/', function ($request, $response)
 		$userMessage = $event['message']['text'];
 
 		
-		if(strtolower($userMessage) == 'halo' or strtolower($userMessage) == 'hai' or strtolower($userMessage) == 'hey' strtolower($userMessage) == 'hei')
+		if(strtolower($userMessage) == 'halo' or strtolower($userMessage) == 'hai' or strtolower($userMessage) == 'hey' or strtolower($userMessage) == 'hei')
 		{
 			$message = "Halo juga";
             		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
@@ -88,7 +88,7 @@ $app->post('/', function ($request, $response)
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 		}
 
-		if(strtolower($userMessage) == "sup ayam" or strtolower($userMessage) == "sop ayam"or strtolower($userMessage) == "sup" or strtolower($userMessage) == "sop"){
+		if(strtolower($userMessage) == "sup ayam" or strtolower($userMessage) == "sop ayam" or strtolower($userMessage) == "sup" or strtolower($userMessage) == "sop"){
 			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://www.ginibro.com/wp-content/uploads/2017/07/000035-01_resep-masakan-sehat-sehari-hari_sup-ayam_800x450_cc0-min.jpg","https://www.ginibro.com/wp-content/uploads/2017/07/000035-01_resep-masakan-sehat-sehari-hari_sup-ayam_800x450_cc0-min.jpg");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
