@@ -76,57 +76,42 @@ $app->post('/', function ($request, $response)
 			$templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('nama template', $confirmTemplateBuilder);
 			$result = $bot->replyMessage($event['replyToken'], $templateMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-		}
+		}*/
 		
-		if(strtolower($userMessage) == "Oatmeal buah")
+		if(strtolower($userMessage) == "oatmeal buah")
 		{
 			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://www.ginibro.com/wp-content/uploads/2017/07/000035-04_resep-masakan-sehat-sehari-hari_oatmeal-buah_800x450_cc0-min.jpg","https://www.ginibro.com/wp-content/uploads/2017/07/000035-04_resep-masakan-sehat-sehari-hari_oatmeal-buah_800x450_cc0-min.jpg");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 		}
 		
-		if(strtolower($userMessage) == "Sandwich Telur")
+		if(strtolower($userMessage) == "sandwich telur")
 		{
 			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://www.ginibro.com/wp-content/uploads/2017/07/000035-05_resep-masakan-sehat-sehari-hari_sandwich-telur_800x450_cc0-min.jpg","https://www.ginibro.com/wp-content/uploads/2017/07/000035-05_resep-masakan-sehat-sehari-hari_sandwich-telur_800x450_cc0-min.jpg");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 		}
-		
-		if(strtolower($userMessage) == "Sup Ayam")
-		{
+
+		if(strtolower($userMessage) == "sup ayam"){
 			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://www.ginibro.com/wp-content/uploads/2017/07/000035-01_resep-masakan-sehat-sehari-hari_sup-ayam_800x450_cc0-min.jpg","https://www.ginibro.com/wp-content/uploads/2017/07/000035-01_resep-masakan-sehat-sehari-hari_sup-ayam_800x450_cc0-min.jpg");
-			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
-			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
-		}
-		
-		if(strtolower($userMessage) == "Salmon Nanas")
-		{
-			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://4.bp.blogspot.com/-RB4BMNQ_mik/UzvZxRjr1UI/AAAAAAAAAbs/8wVG8lKSa7g/s1600/2.2+Resep+Makanan+Sehat+untuk+Diet.png","https://4.bp.blogspot.com/-RB4BMNQ_mik/UzvZxRjr1UI/AAAAAAAAAbs/8wVG8lKSa7g/s1600/2.2+Resep+Makanan+Sehat+untuk+Diet.png");
-			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
-			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
-		}
-		
-		if(strtolower($userMessage) == "kirim gambar"){
-			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://myanimelist.cdn-dena.com/images/characters/8/320273.jpg","https://myanimelist.cdn-dena.com/images/characters/8/320273.jpg");
-			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
-			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
-			}*/
-		
-		if(strtolower($userMessage) == "kirim gambar"){
-			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://2.bp.blogspot.com/-b04je0HQo-U/UzvZwyopgWI/AAAAAAAAAbg/sVH4wBxE20w/s1600/2.3+Resep+makanan+Sehat+untuk+Diet.png","https://2.bp.blogspot.com/-b04je0HQo-U/UzvZwyopgWI/AAAAAAAAAbg/sVH4wBxE20w/s1600/2.3+Resep+makanan+Sehat+untuk+Diet.png");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 			}
 		
 		
-		/*if(strtolower($userMessage) == "Salad buah")
-		{
+		if(strtolower($userMessage) == "salad"){
 			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://2.bp.blogspot.com/-b04je0HQo-U/UzvZwyopgWI/AAAAAAAAAbg/sVH4wBxE20w/s1600/2.3+Resep+makanan+Sehat+untuk+Diet.png","https://2.bp.blogspot.com/-b04je0HQo-U/UzvZwyopgWI/AAAAAAAAAbg/sVH4wBxE20w/s1600/2.3+Resep+makanan+Sehat+untuk+Diet.png");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
-		}*/
+			}
 		
-
+		if(strtolower($userMessage) == "salmon nanas"){
+			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://4.bp.blogspot.com/-RB4BMNQ_mik/UzvZxRjr1UI/AAAAAAAAAbs/8wVG8lKSa7g/s1600/2.2+Resep+Makanan+Sehat+untuk+Diet.png","https://4.bp.blogspot.com/-RB4BMNQ_mik/UzvZxRjr1UI/AAAAAAAAAbs/8wVG8lKSa7g/s1600/2.2+Resep+Makanan+Sehat+untuk+Diet.png");
+			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
+			}
+		
+		
 		
 		if(strtolower($userMessage) == "tips kesehatan")
 		{
@@ -196,8 +181,8 @@ $app->post('/', function ($request, $response)
 			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif"),
 			  ]),
 			
-			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Burpees","30 Repetisi x 3 Set","https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif",[
-			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif"),
+			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Jackknifes","30 Repetisi x 3 Set","https://www.phunukieuviet.com/upload_images/images/75c2d853-1be4-4a01-aeca-c0f86893a1b0.gif",[
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"https://www.phunukieuviet.com/upload_images/images/75c2d853-1be4-4a01-aeca-c0f86893a1b0.gif"),
 			  ]),
 				
 			// new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Jackknifes","30 Repetisi x 3 Set","http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif",[
