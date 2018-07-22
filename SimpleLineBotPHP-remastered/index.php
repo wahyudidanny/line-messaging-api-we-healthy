@@ -64,7 +64,19 @@ $app->post('/', function ($request, $response)
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		}
 		
-		
+		if($userMessage == "resep masakan")
+		{
+			$confirmTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder(
+			"Ok ini ada beberapa resep masakan diet \n kamu tinggal pilih aja dibawah\n",
+		  	 [
+		   	new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Oatmeal Buah \n',"/oatmeal buah"),
+		   	new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Sandwich Telur \n','/sandwich telur'),
+			 ]
+		   );
+			$templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('nama template', $confirmTemplateBuilder);
+			$result = $bot->replyMessage($event['replyToken'], $templateMessage);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		}
 		
 		
 		if(strtolower($userMessage) == "tips kesehatan")
