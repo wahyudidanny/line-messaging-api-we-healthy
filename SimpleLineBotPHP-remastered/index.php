@@ -64,7 +64,7 @@ $app->post('/', function ($request, $response)
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		}
 		
-		if($userMessage == "resep masakan")
+		/*if($userMessage == "resep masakan")
 		{
 			$confirmTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder(
 			"Ok ini ada beberapa resep masakan diet \n kamu tinggal pilih aja dibawah\n",
@@ -76,8 +76,44 @@ $app->post('/', function ($request, $response)
 			$templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('nama template', $confirmTemplateBuilder);
 			$result = $bot->replyMessage($event['replyToken'], $templateMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		}*/
+		
+		if(strtolower($userMessage) == "Oatmeal buah")
+		{
+			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://www.ginibro.com/wp-content/uploads/2017/07/000035-04_resep-masakan-sehat-sehari-hari_oatmeal-buah_800x450_cc0-min.jpg","https://www.ginibro.com/wp-content/uploads/2017/07/000035-04_resep-masakan-sehat-sehari-hari_oatmeal-buah_800x450_cc0-min.jpg");
+			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 		}
 		
+		if(strtolower($userMessage) == "Sandwich Telur")
+		{
+			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://www.ginibro.com/wp-content/uploads/2017/07/000035-05_resep-masakan-sehat-sehari-hari_sandwich-telur_800x450_cc0-min.jpg","https://www.ginibro.com/wp-content/uploads/2017/07/000035-05_resep-masakan-sehat-sehari-hari_sandwich-telur_800x450_cc0-min.jpg");
+			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
+		}
+		
+		if(strtolower($userMessage) == "Sup Ayam")
+		{
+			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://www.ginibro.com/wp-content/uploads/2017/07/000035-01_resep-masakan-sehat-sehari-hari_sup-ayam_800x450_cc0-min.jpg","https://www.ginibro.com/wp-content/uploads/2017/07/000035-01_resep-masakan-sehat-sehari-hari_sup-ayam_800x450_cc0-min.jpg");
+			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
+		}
+		
+		if(strtolower($userMessage) == "Sup Ayam")
+		{
+			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://www.ginibro.com/wp-content/uploads/2017/07/000035-01_resep-masakan-sehat-sehari-hari_sup-ayam_800x450_cc0-min.jpg","https://www.ginibro.com/wp-content/uploads/2017/07/000035-01_resep-masakan-sehat-sehari-hari_sup-ayam_800x450_cc0-min.jpg");
+			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
+		}
+		
+		if(strtolower($userMessage) == "Salad buah")
+		{
+			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://2.bp.blogspot.com/-b04je0HQo-U/UzvZwyopgWI/AAAAAAAAAbg/sVH4wBxE20w/s1600/2.3+Resep+makanan+Sehat+untuk+Diet.png","https://2.bp.blogspot.com/-b04je0HQo-U/UzvZwyopgWI/AAAAAAAAAbg/sVH4wBxE20w/s1600/2.3+Resep+makanan+Sehat+untuk+Diet.png");
+			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
+		}
+		
+
 		
 		if(strtolower($userMessage) == "tips kesehatan")
 		{
@@ -143,9 +179,9 @@ $app->post('/', function ($request, $response)
 			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/b0bf80e6-92bf-4a8c-8573-5876a22e9c46.gif"),
 			  ]),
 				
-			 // new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Jackknifes","30 Repetisi x 3 Set","http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif",[
-			 // new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif"),
-			//  ]),
+			 new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Jackknifes","30 Repetisi x 3 Set","http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif",[
+			 new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif"),
+			 ]),
 				
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Burpees","30 Repetisi x 3 Set","https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif",[
 			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif"),
