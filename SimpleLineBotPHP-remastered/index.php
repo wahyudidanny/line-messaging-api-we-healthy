@@ -99,12 +99,18 @@ $app->post('/', function ($request, $response)
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 		}
 		
-		if(strtolower($userMessage) == "Sup Ayam")
+		if(strtolower($userMessage) == "Salmon Nanas")
 		{
-			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://www.ginibro.com/wp-content/uploads/2017/07/000035-01_resep-masakan-sehat-sehari-hari_sup-ayam_800x450_cc0-min.jpg","https://www.ginibro.com/wp-content/uploads/2017/07/000035-01_resep-masakan-sehat-sehari-hari_sup-ayam_800x450_cc0-min.jpg");
+			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://4.bp.blogspot.com/-RB4BMNQ_mik/UzvZxRjr1UI/AAAAAAAAAbs/8wVG8lKSa7g/s1600/2.2+Resep+Makanan+Sehat+untuk+Diet.png","https://4.bp.blogspot.com/-RB4BMNQ_mik/UzvZxRjr1UI/AAAAAAAAAbs/8wVG8lKSa7g/s1600/2.2+Resep+Makanan+Sehat+untuk+Diet.png");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 		}
+		
+		if($userMessage == "kirim gambar"){
+			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://myanimelist.cdn-dena.com/images/characters/8/320273.jpg","https://myanimelist.cdn-dena.com/images/characters/8/320273.jpg");
+			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
+			}
 		
 		if(strtolower($userMessage) == "Salad buah")
 		{
@@ -155,14 +161,14 @@ $app->post('/', function ($request, $response)
 		{
 			$carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Mountain Climbers", "30 Repetisi x 3 Set","https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/4b668875-0d03-4c26-8126-81daa38d8fad.gif",[
-			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/4b668875-0d03-4c26-8126-81daa38d8fad.gif"),
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/4b668875-0d03-4c26-8126-81daa38d8fad.gif"),
 			  ]),
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Sprawls","30 Repetisi x 3 Set","https://img.aws.livestrongcdn.com/ls-article-image-640/cme/photography.prod.demandstudios.com/940ca2f5-2b16-4810-b940-eca178e2dd72.gif",[
-			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://img.aws.livestrongcdn.com/ls-article-image-640/cme/photography.prod.demandstudios.com/940ca2f5-2b16-4810-b940-eca178e2dd72.gif"),
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"https://img.aws.livestrongcdn.com/ls-article-image-640/cme/photography.prod.demandstudios.com/940ca2f5-2b16-4810-b940-eca178e2dd72.gif"),
 			  ]),
 				
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Jumping Squats","30 Repetisi x 3 Set","https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/5a1e902f-42e7-4b38-b3c5-af3cb2cbbf0c.gif",[
-			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/5a1e902f-42e7-4b38-b3c5-af3cb2cbbf0c.gif"),
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/5a1e902f-42e7-4b38-b3c5-af3cb2cbbf0c.gif"),
 			  ]),
 
 			  ]);
@@ -176,17 +182,16 @@ $app->post('/', function ($request, $response)
 		{
 			$carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Pistol Squat", "5 Repetisi x 3 Set","https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/b0bf80e6-92bf-4a8c-8573-5876a22e9c46.gif",[
-			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/b0bf80e6-92bf-4a8c-8573-5876a22e9c46.gif"),
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/b0bf80e6-92bf-4a8c-8573-5876a22e9c46.gif"),
 			  ]),
-				
-			 new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Jackknifes","30 Repetisi x 3 Set","http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif",[
-			 new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif"),
-			 ]),
-				
+	
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Burpees","30 Repetisi x 3 Set","https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif",[
-			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif"),
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif"),
 			  ]),
 			
+			 new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Jackknifes","30 Repetisi x 3 Set","http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif",[
+			 new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif"),
+			 ]),
 			
 			  ]);
 			$templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('nama template',$carouselTemplateBuilder);
@@ -199,14 +204,14 @@ $app->post('/', function ($request, $response)
 		{
 			$carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Pushup", "30 Repetisi x 3 Set","https://i.ytimg.com/vi/_l3ySVKYVJ8/maxresdefault.jpg",[
-			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://i.ytimg.com/vi/_l3ySVKYVJ8/maxresdefault.jpg"),
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"https://i.ytimg.com/vi/_l3ySVKYVJ8/maxresdefault.jpg"),
 			  ]),
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Plank","60 Repetisi x 3 Set","https://qph.fs.quoracdn.net/main-qimg-48f9ed13dc64074e201f20b1324ed957-c",[
-			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://qph.fs.quoracdn.net/main-qimg-48f9ed13dc64074e201f20b1324ed957-c"),
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"https://qph.fs.quoracdn.net/main-qimg-48f9ed13dc64074e201f20b1324ed957-c"),
 			  ]),
 				
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Squats","30 Repetisi x 3 Set","https://cdn-ami-drupal.heartyhosting.com/sites/muscleandfitness.com/files/body-weight-squat-swiss-ball-exercise_landscape.jpg",[
-			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://cdn-ami-drupal.heartyhosting.com/sites/muscleandfitness.com/files/body-weight-squat-swiss-ball-exercise_landscape.jpg"),
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"https://cdn-ami-drupal.heartyhosting.com/sites/muscleandfitness.com/files/body-weight-squat-swiss-ball-exercise_landscape.jpg"),
 			  ]),
 			
 			  //new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Situp","60 Repetisi x 3 Set","http://78.media.tumblr.com/586bae1d9492345315b7a066c69287cb/tumblr_inline_mx42q8LFnF1rdu2za.jpg",[
