@@ -96,7 +96,7 @@ $app->post('/', function ($request, $response)
 
 
 		if(strtolower($userMessage) == "salad" or strtolower($userMessage) == "salad sayur" or strtolower($userMessage) == "salad campur"){
-			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("http://resepmedia.com/wp-content/uploads/2018/01/Gambar-Salad-Sayur.jpg","http://resepmedia.com/wp-content/uploads/2018/01/Gambar-Salad-Sayur.jpg");
+			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://hips.hearstapps.com/del.h-cdn.co/assets/16/21/1464036871-delish-summer-salads-chicken-fajita.jpg","https://hips.hearstapps.com/del.h-cdn.co/assets/16/21/1464036871-delish-summer-salads-chicken-fajita.jpg");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 			}	
