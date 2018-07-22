@@ -63,9 +63,9 @@ $app->post('/', function ($request, $response)
 		{
 			$messages[] = "Hello\n";
 			$messages[] = "Ada beberapa keyword yang bisa kamu pakai \n";
-			$messages[] = "Keyword:workout,olahraga,latihan,recipe,tips kesehatan,tips,tip \n";
-			$messages[] = "medium, gampang, sulit, hard, resep \n";
-			$messages[] = "oatmeal, sandwich, salmon, salad \n";
+			$messages[] = "Keyword:workout,olahraga,latihan,recipe,tips kesehatan,tips,tip, ";
+			$messages[] = "medium, gampang, sulit, hard, resep, ";
+			$messages[] = "oatmeal, sandwich, salmon, salad ";
 			$messages[] = "Untuk sementara itu dulu ya";
 			
 			
