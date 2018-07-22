@@ -49,14 +49,24 @@ $app->post('/', function ($request, $response)
 		
 		$userMessage = $event['message']['text'];
 
+		
+		if(strtolower($userMessage) == 'halo' or strtolower($userMessage) == 'hai' or strtolower($userMessage) == 'hey' strtolower($userMessage) == 'hei')
+		{
+			$message = "Halo juga";
+            		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		
+		}
+		
 		if(strtolower($userMessage) == "keyword")
 		{
-			$messages[] = "Hello \n";
+			$messages[] = "Hello\n";
 			$messages[] = "Ada beberapa keyword yang bisa kamu pakai \n";
-			$messages[] = "1.Olahraga \n";
-			$messages[] = "2.Tips Kesehatan\n";
-			$messages[] = "3.Resep Makanan \n";
-			$messages[] = "Untuk yang lain bakal menyusul ya";
+			$messages[] = "Keyword:workout,olahraga,latihan,recipe,tips kesehatan,tips,tip \n";
+			$messages[] = "medium, gampang, sulit, hard, resep \n";
+			$messages[] = "oatmeal, sandwich, salmon, salad \n";
+			$messages[] = "Untuk sementara itu dulu ya";
 			
 			
 		  	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(implode(" ",$messages));
@@ -64,48 +74,33 @@ $app->post('/', function ($request, $response)
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		}
 		
-		/*if($userMessage == "resep masakan")
-		{
-			$confirmTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder(
-			"Ok ini ada beberapa resep masakan diet \n kamu tinggal pilih aja dibawah\n",
-		  	 [
-		   	new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Oatmeal Buah \n',"/oatmeal buah"),
-		   	new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder('Sandwich Telur \n','/sandwich telur'),
-			 ]
-		   );
-			$templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('nama template', $confirmTemplateBuilder);
-			$result = $bot->replyMessage($event['replyToken'], $templateMessage);
-			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-		}*/
-		
-		if(strtolower($userMessage) == "oatmeal buah")
+		if(strtolower($userMessage) == "oatmeal buah" or strtolower($userMessage) == "oatmeal" or strtolower($userMessage) == "buah" or strtolower($userMessage) == "resep oat")
 		{
 			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://www.ginibro.com/wp-content/uploads/2017/07/000035-04_resep-masakan-sehat-sehari-hari_oatmeal-buah_800x450_cc0-min.jpg","https://www.ginibro.com/wp-content/uploads/2017/07/000035-04_resep-masakan-sehat-sehari-hari_oatmeal-buah_800x450_cc0-min.jpg");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 		}
 		
-		if(strtolower($userMessage) == "sandwich telur")
+		if(strtolower($userMessage) == "sandwich telur" or strtolower($userMessage) == "sandwich" or strtolower($userMessage) == "roti lapis telur")
 		{
 			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://www.ginibro.com/wp-content/uploads/2017/07/000035-05_resep-masakan-sehat-sehari-hari_sandwich-telur_800x450_cc0-min.jpg","https://www.ginibro.com/wp-content/uploads/2017/07/000035-05_resep-masakan-sehat-sehari-hari_sandwich-telur_800x450_cc0-min.jpg");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 		}
 
-		if(strtolower($userMessage) == "sup ayam"){
+		if(strtolower($userMessage) == "sup ayam" or strtolower($userMessage) == "sop ayam"or strtolower($userMessage) == "sup" or strtolower($userMessage) == "sop"){
 			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://www.ginibro.com/wp-content/uploads/2017/07/000035-01_resep-masakan-sehat-sehari-hari_sup-ayam_800x450_cc0-min.jpg","https://www.ginibro.com/wp-content/uploads/2017/07/000035-01_resep-masakan-sehat-sehari-hari_sup-ayam_800x450_cc0-min.jpg");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 			}
-		
-		
-		if(strtolower($userMessage) == "salad"){
-			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://2.bp.blogspot.com/-b04je0HQo-U/UzvZwyopgWI/AAAAAAAAAbg/sVH4wBxE20w/s1600/2.3+Resep+makanan+Sehat+untuk+Diet.png","https://2.bp.blogspot.com/-b04je0HQo-U/UzvZwyopgWI/AAAAAAAAAbg/sVH4wBxE20w/s1600/2.3+Resep+makanan+Sehat+untuk+Diet.png");
+
+		if(strtolower($userMessage) == "salad" or strtolower($userMessage) == "salad sayur" or strtolower($userMessage) == "salad campur"){
+			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("http://resepmedia.com/wp-content/uploads/2018/01/Gambar-Salad-Sayur.jpg","http://resepmedia.com/wp-content/uploads/2018/01/Gambar-Salad-Sayur.jpg");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 			}
 		
-		if(strtolower($userMessage) == "salmon nanas"){
+		if(strtolower($userMessage) == "salmon nanas" or strtolower($userMessage) == "salmon" or strtolower($userMessage) == "ikan salmon" or strtolower($userMessage) == "saus nanas salmon" ){
 			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://4.bp.blogspot.com/-RB4BMNQ_mik/UzvZxRjr1UI/AAAAAAAAAbs/8wVG8lKSa7g/s1600/2.2+Resep+Makanan+Sehat+untuk+Diet.png","https://4.bp.blogspot.com/-RB4BMNQ_mik/UzvZxRjr1UI/AAAAAAAAAbs/8wVG8lKSa7g/s1600/2.2+Resep+Makanan+Sehat+untuk+Diet.png");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
@@ -113,7 +108,7 @@ $app->post('/', function ($request, $response)
 		
 		
 		
-		if(strtolower($userMessage) == "tips kesehatan")
+		if(strtolower($userMessage) == "tips kesehatan" or strtolower($userMessage) == "tips" or strtolower($userMessage) == "tip" )
 		{
 		 $questions = array(
 						"Sebelum olahraga sebaiknya kita melakukan pemanasan terlebih dahulu",
@@ -149,7 +144,7 @@ $app->post('/', function ($request, $response)
 		
 		
 		
-		if(strtolower($userMessage) == "olahraga medium" or strtolower($userMessage) == "medium")
+		if(strtolower($userMessage) == "olahraga medium" or strtolower($userMessage) == "medium" or strtolower($userMessage) == "lumayan")
 		{
 			$carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Mountain Climbers", "30 Repetisi x 3 Set","https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/4b668875-0d03-4c26-8126-81daa38d8fad.gif",[
@@ -170,7 +165,7 @@ $app->post('/', function ($request, $response)
 		}
 		
 		
-		if(strtolower($userMessage) == "olahraga sulit" or strtolower($userMessage) == "sulit" or strtolower($userMessage) == "hard")
+		if(strtolower($userMessage) == "olahraga sulit" or strtolower($userMessage) == "sulit" or strtolower($userMessage) == "hard" or strtolower($userMessage) == "olahraga susah" or strtolower($userMessage) == "susah")
 		{
 			$carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Pistol Squat", "5 Repetisi x 3 Set","https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/b0bf80e6-92bf-4a8c-8573-5876a22e9c46.gif",[
