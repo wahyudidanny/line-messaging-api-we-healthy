@@ -61,11 +61,11 @@ $app->post('/', function ($request, $response)
 		
 		if(strtolower($userMessage) == "keyword")
 		{
-			$messages[] = "Hello\n";
-			$messages[] = "Ada beberapa keyword yang bisa kamu pakai \n";
+			$messages[] = "Hello, ";
+			$messages[] = "Ada beberapa keyword yang bisa kamu pakai.";
 			$messages[] = "Keyword:workout,olahraga,latihan,recipe,tips kesehatan,tips,tip, ";
 			$messages[] = "medium, gampang, sulit, hard, resep, ";
-			$messages[] = "oatmeal, sandwich, salmon, salad ";
+			$messages[] = "oatmeal, sandwich, salmon, salad. \n";
 			$messages[] = "Untuk sementara itu dulu ya";
 			
 			
