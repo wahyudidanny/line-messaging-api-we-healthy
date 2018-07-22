@@ -94,11 +94,13 @@ $app->post('/', function ($request, $response)
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 			}
 
+
 		if(strtolower($userMessage) == "salad" or strtolower($userMessage) == "salad sayur" or strtolower($userMessage) == "salad campur"){
 			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("http://resepmedia.com/wp-content/uploads/2018/01/Gambar-Salad-Sayur.jpg","http://resepmedia.com/wp-content/uploads/2018/01/Gambar-Salad-Sayur.jpg");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
-			}
+			}	
+		
 		
 		if(strtolower($userMessage) == "salmon nanas" or strtolower($userMessage) == "salmon" or strtolower($userMessage) == "ikan salmon" or strtolower($userMessage) == "saus nanas salmon" ){
 			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://4.bp.blogspot.com/-RB4BMNQ_mik/UzvZxRjr1UI/AAAAAAAAAbs/8wVG8lKSa7g/s1600/2.2+Resep+Makanan+Sehat+untuk+Diet.png","https://4.bp.blogspot.com/-RB4BMNQ_mik/UzvZxRjr1UI/AAAAAAAAAbs/8wVG8lKSa7g/s1600/2.2+Resep+Makanan+Sehat+untuk+Diet.png");
