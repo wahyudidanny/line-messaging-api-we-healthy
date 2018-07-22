@@ -76,7 +76,20 @@ $app->post('/', function ($request, $response)
 						"Pilih Makanan Berwarna Cerah sebagai Antioksidan",
 						"Kurangi Makanan Olahan dan Makanan dalam Kaleng",
 						"Kenali Makanan Pemicu, Kendalikan Asupan Gula dan Garam Anda",
-						"Katakan Tidak untuk Makanan Berminyak"
+						"Katakan Tidak untuk Makanan Berminyak",
+						"Ganti cemilan Anda denfam buah-buahan yang lebih sehat dan segar",
+						"Minum air putih 8 gelas setiap harinya",
+						"Mari jaga kebersihan diri demi kesehatan",
+						"Konsumsi makanan seimbang agar tubuh tetap sehat",
+						"Hindari makanan cepat saji demi kesehatan Anda",
+						"Lakukan periksa kesehatan minimal setahun sekali demi kesehatan Anda",
+						"Lakukan diet sehat agar tubuh ideal dan sehat",
+						"Biasakan sikat gigi 2 kali sehari untuk menjaga kebersihan mulut",
+						"Lakukan gaya hidup sehat demi kesehatan",
+						"Perbanyak makan sayur dan buah agar kesehatan pencernaan terjaga",
+						"Hindari rokok dan alkohol demi kesehatan Anda",
+						"Biasakan cuci tangan sebelum makan",
+						"Selalu sediakan menu 4 sehat 5 sempurna untuk menjaga kesehatan Anda"
 						);
 				$index = rand(0, count($questions) - 1);
 				$getval = array($questions[$index]);
@@ -122,9 +135,9 @@ $app->post('/', function ($request, $response)
 			 // new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif"),
 			//  ]),
 				
-			//  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Burpees","30 Repetisi x 3 Set","https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif",[
-			//  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif"),
-			 // ]),
+			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Burpees","30 Repetisi x 3 Set","https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif",[
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif"),
+			  ]),
 			
 			
 			  ]);
