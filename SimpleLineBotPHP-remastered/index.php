@@ -76,7 +76,7 @@ $app->post('/', function ($request, $response)
 			$templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('nama template', $confirmTemplateBuilder);
 			$result = $bot->replyMessage($event['replyToken'], $templateMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-		}*/
+		}
 		
 		if(strtolower($userMessage) == "Oatmeal buah")
 		{
@@ -106,18 +106,25 @@ $app->post('/', function ($request, $response)
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 		}
 		
-		if($userMessage == "kirim gambar"){
+		if(strtolower($userMessage) == "kirim gambar"){
 			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://myanimelist.cdn-dena.com/images/characters/8/320273.jpg","https://myanimelist.cdn-dena.com/images/characters/8/320273.jpg");
+			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
+			}*/
+		
+		if(strtolower($userMessage) == "kirim gambar"){
+			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://2.bp.blogspot.com/-b04je0HQo-U/UzvZwyopgWI/AAAAAAAAAbg/sVH4wBxE20w/s1600/2.3+Resep+makanan+Sehat+untuk+Diet.png","https://2.bp.blogspot.com/-b04je0HQo-U/UzvZwyopgWI/AAAAAAAAAbg/sVH4wBxE20w/s1600/2.3+Resep+makanan+Sehat+untuk+Diet.png");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
 			}
 		
-		if(strtolower($userMessage) == "Salad buah")
+		
+		/*if(strtolower($userMessage) == "Salad buah")
 		{
 			$imageMessage = new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder("https://2.bp.blogspot.com/-b04je0HQo-U/UzvZwyopgWI/AAAAAAAAAbg/sVH4wBxE20w/s1600/2.3+Resep+makanan+Sehat+untuk+Diet.png","https://2.bp.blogspot.com/-b04je0HQo-U/UzvZwyopgWI/AAAAAAAAAbg/sVH4wBxE20w/s1600/2.3+Resep+makanan+Sehat+untuk+Diet.png");
 			$result = $bot->replyMessage($event['replyToken'], $imageMessage);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();     
-		}
+		}*/
 		
 
 		
@@ -157,7 +164,7 @@ $app->post('/', function ($request, $response)
 		
 		
 		
-		if(strtolower($userMessage) == "olahraga medium")
+		if(strtolower($userMessage) == "olahraga medium" or strtolower($userMessage) == "medium")
 		{
 			$carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Mountain Climbers", "30 Repetisi x 3 Set","https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/4b668875-0d03-4c26-8126-81daa38d8fad.gif",[
@@ -178,7 +185,7 @@ $app->post('/', function ($request, $response)
 		}
 		
 		
-		if(strtolower($userMessage) == "olahraga sulit")
+		if(strtolower($userMessage) == "olahraga sulit" or strtolower($userMessage) == "sulit" or strtolower($userMessage) == "hard")
 		{
 			$carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Pistol Squat", "5 Repetisi x 3 Set","https://img.aws.livestrongcdn.com/ls-article-image-673/cme/photography.prod.demandstudios.com/b0bf80e6-92bf-4a8c-8573-5876a22e9c46.gif",[
@@ -189,9 +196,13 @@ $app->post('/', function ($request, $response)
 			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif"),
 			  ]),
 			
-			 new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Jackknifes","30 Repetisi x 3 Set","http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif",[
-			 new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif"),
-			 ]),
+			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Burpees","30 Repetisi x 3 Set","https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif",[
+			  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"https://thumbs.gfycat.com/FondAntiqueCuckoo-size_restricted.gif"),
+			  ]),
+				
+			// new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Jackknifes","30 Repetisi x 3 Set","http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif",[
+			// new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka Gambar',"http://904fitness.com/wp-content/uploads/2015/04/JACKKNIFE.gif"),
+			// ]),
 			
 			  ]);
 			$templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('nama template',$carouselTemplateBuilder);
@@ -200,7 +211,7 @@ $app->post('/', function ($request, $response)
 		}
 
 
-		if(strtolower($userMessage) == "olahraga gampang")
+		if(strtolower($userMessage) == "olahraga gampang" or strtolower($userMessage) == "gampang" or strtolower($userMessage) == "easy" or strtolower($userMessage) == "mudah")
 		{
 			$carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
 			  new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Pushup", "30 Repetisi x 3 Set","https://i.ytimg.com/vi/_l3ySVKYVJ8/maxresdefault.jpg",[
